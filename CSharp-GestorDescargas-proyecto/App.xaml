@@ -1,0 +1,45 @@
+﻿<Application x:Class="CSharp_GestorDescargas_proyecto.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:CSharp_GestorDescargas_proyecto"
+             StartupUri="MainWindow.xaml">
+
+    <Application.Resources>
+        <DataTemplate x:Key="TemplateListBox">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="65"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Source="{Binding Path=Imagen.UriSource}"
+                       Grid.Column="0"
+                       Width="70"
+                       Height="60"/>
+
+                <Label Content="{Binding Nombre}"
+                       Grid.Column="1"
+                       FontSize="15"
+                       FontFamily="Segoe UI"
+                       FontStretch="Expanded"
+                       FontWeight="Regular"/>
+
+                <Label Content="{Binding Tamaño}"
+                       Grid.Column="1"
+                       Margin="0,25,0,0"
+                       FontSize="11"
+                       FontFamily="Segoe UI"
+                       FontStretch="Expanded"
+                       FontWeight="Medium"/>
+
+                <Label Content="{Binding Ruta}"
+                       Grid.Column="1"
+                       Margin="0,40,0,0"
+                       FontSize="12"
+                       FontFamily="Segoe UI"
+                       FontStretch="Medium"
+                       FontWeight="ExtraLight"/>
+            </Grid>
+        </DataTemplate>
+    </Application.Resources>
+</Application>

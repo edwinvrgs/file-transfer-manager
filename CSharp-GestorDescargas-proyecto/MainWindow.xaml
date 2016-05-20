@@ -1,0 +1,49 @@
+﻿<Window x:Class="CSharp_GestorDescargas_proyecto.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CSharp_GestorDescargas_proyecto"
+        mc:Ignorable="d"
+        
+        Title="Manager" 
+        Height="155" 
+        Width="150" 
+        Focusable="False" 
+        WindowStartupLocation="CenterScreen" 
+        ResizeMode="NoResize" 
+        WindowStyle="ToolWindow"
+        BorderThickness="0">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Button x:Name="button_salir" 
+                Grid.Row="2"
+                Margin="5,5,5,5"
+                Content="Salir"
+                Click="button_salir_click"  
+        	    Background="Gray"
+                Foreground="White"/>
+
+        <Button x:Name="button_server" 
+                Grid.Row="0"
+                Margin="5,5,5,5"
+        	    Content="Servidor" 
+        	    Click="button_server_click" 
+        	    Background="SteelBlue"
+                Foreground="White"/>
+
+        <Button x:Name="button_client" 
+                Grid.Row="1"
+                Margin="5,5,5,5"
+        	    Content="Cliente"
+        	    Click="button_client_click"  
+        	    Background="SteelBlue"
+                Foreground="White"/>
+    </Grid>
+</Window>

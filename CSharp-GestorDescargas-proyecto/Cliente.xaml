@@ -1,0 +1,146 @@
+﻿<Window x:Class="CSharp_GestorDescargas_proyecto.Cliente"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CSharp_GestorDescargas_proyecto"
+        mc:Ignorable="d"
+        Title="Cliente" Height="480" Width="600"
+        ResizeMode="NoResize">
+
+    <Window.Resources>
+        <DataTemplate x:Key="TemplateListDescargas">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="65"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Source="{Binding Path=Item.Imagen.UriSource}"
+                       Grid.Column="0"
+                       VerticalAlignment="Top"
+                       Width="70"
+                       Height="60"/>
+
+                <Button x:Name="boton_mas"
+                        Content="+"
+                        Grid.Column="0"
+                        Margin="5,15,5,5"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Right"
+                        Width="20"
+                        Height="20"
+                        Foreground="White" 
+                        Background="SteelBlue"
+                        Click="ClickAgregarParticion"/>
+
+                <Button x:Name="boton_menos"
+                        Content="-"
+                        Grid.Column="0"
+                        Margin="5,15,5,5"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Left"
+                        Width="20"
+                        Height="20"
+                        Foreground="White" 
+                        Background="SteelBlue"
+                        Click="ClickEliminarParticion"/>
+
+                <Label Content="{Binding Item.Nombre}"
+                       Grid.Column="1"
+                       FontSize="15"
+                       FontFamily="Segoe UI"
+                       FontStretch="Expanded"
+                       FontWeight="Regular"/>
+
+                <Label Content="{Binding Item.Ruta}"
+                       Grid.Column="1"
+                       Margin="0,20,0,0"
+                       FontSize="11"
+                       FontFamily="Segoe UI"
+                       FontStretch="Medium"
+                       FontWeight="ExtraLight"/>
+
+                <ListBox Grid.Column="1"
+                         Height="{Binding Partes.Lenght * 20}"
+                         Margin="5,40,0,0"
+                         BorderThickness="0"
+                         ItemsSource="{Binding Partes}"
+                         ItemTemplate="{DynamicResource InsideListTemplate}">
+                </ListBox>
+            </Grid>
+
+        </DataTemplate>
+
+        <DataTemplate x:Key="InsideListTemplate">
+            <Grid Height="30"
+                  Width="450">
+
+                <ProgressBar Name="barra_progreso"
+                             Value="{Binding Progreso, UpdateSourceTrigger=PropertyChanged}"
+                             Minimum="{Binding Inicio, UpdateSourceTrigger=PropertyChanged}"
+                             Maximum="{Binding Fin, UpdateSourceTrigger=PropertyChanged}"
+                             Margin="0,5,5,5"/>
+
+                <TextBlock HorizontalAlignment="Center"
+                           VerticalAlignment="Center">
+                    <TextBlock.Text>
+                        <MultiBinding StringFormat="{}  Progreso: {0}% - Velocidad: {1} kB/s">
+                            <Binding Path="Completado" />
+                            <Binding Path="Velocidad" />
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
+    
+    <DockPanel Margin="10,10,10,10" 
+               HorizontalAlignment="Center"
+               Width="580"
+               Background="SteelBlue">
+
+        <TabControl x:Name="tab_control"
+                    Foreground="White" 
+                    Margin="5,5,5,5"
+                    TabStripPlacement="Bottom">
+
+            <TabItem Header="Archivos">
+                <DockPanel Margin="0,0,0,0" 
+                           HorizontalAlignment="Center" 
+                           Width="560">
+
+                    <ListBox DockPanel.Dock="Top" 
+                             x:Name="lista_archivos"
+                             Height="auto"
+                             Margin="0,0,0,0" 
+                             ItemTemplate="{DynamicResource TemplateListBox}">
+
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="{x:Type ListBoxItem}" 
+                                   BasedOn="{StaticResource {x:Type ListBoxItem}}">
+
+                                <EventSetter Event="MouseDoubleClick" 
+                                             Handler="ListArchivosDoubleClick"/>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                    </ListBox>
+                </DockPanel>
+            </TabItem>
+
+            <TabItem Header="Descargas">
+                <DockPanel Margin="0,0,0,0" 
+                           HorizontalAlignment="Center" 
+                           Width="560">
+
+                    <ListBox DockPanel.Dock="Top" 
+                             x:Name="lista_descargas"
+                             Height="auto"
+                             Margin="0,0,0,0"
+                             ItemTemplate="{StaticResource TemplateListDescargas}"/>
+
+                </DockPanel>
+            </TabItem>
+        </TabControl>
+    </DockPanel>
+</Window>

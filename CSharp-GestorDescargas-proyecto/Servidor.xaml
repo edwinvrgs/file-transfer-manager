@@ -1,0 +1,32 @@
+﻿<Window x:Class="CSharp_GestorDescargas_proyecto.Servidor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CSharp_GestorDescargas_proyecto"
+        mc:Ignorable="d"
+        Title="Servidor" Height="480" Width="600"
+        ResizeMode="NoResize">
+    
+    <DockPanel Margin="10,10,10,10"
+               HorizontalAlignment="Center" 
+               Width="570">
+
+        <ListBox DockPanel.Dock="Top" 
+                 x:Name="lista_archivos"
+                 Height="375"
+                 Margin="5,5,5,5"
+                 ItemTemplate="{DynamicResource TemplateListBox}"/>
+
+        <Button DockPanel.Dock="Bottom" 
+                Name="button_carpeta" 
+                Height="auto"
+                Margin="5,0,5,5"
+                FontSize="15"
+                Content="ELEGIR CARPETA A COMPARTIR"
+                Foreground="White" 
+                Background="SteelBlue" 
+                Click="ClickBotonCarpeta"/>
+
+    </DockPanel>
+</Window>

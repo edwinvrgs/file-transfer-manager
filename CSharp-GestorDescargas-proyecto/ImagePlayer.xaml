@@ -1,0 +1,19 @@
+﻿<Window x:Class="CSharp_GestorDescargas_proyecto.ImagePlayer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CSharp_GestorDescargas_proyecto"
+        mc:Ignorable="d"
+        x:Name="image_player"
+        Title="Image Player" Height="450" Width="450"
+        ResizeMode="NoResize">
+
+    <Grid>
+        <Image x:Name="imagen" 
+               Height="400" 
+               Width="400"/>
+
+    </Grid>
+
+</Window>
